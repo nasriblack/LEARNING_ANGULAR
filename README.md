@@ -1,4 +1,5 @@
-**20/09/2025**
+# Progress Log
+- **20/09/2025**: Started the readme file, make the structure of the readme file.
 
 I will Start with Angular 16 because in this angular version have the basics 
 
