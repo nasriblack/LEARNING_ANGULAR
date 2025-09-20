@@ -1,5 +1,6 @@
 # Progress Log
 - **20/09/2025**: Started the readme file, make the structure of the readme file.
+- **2/09/2025**: Implement the gitignore ,
 
 I will Start with Angular 16 because in this angular version have the basics 
 
