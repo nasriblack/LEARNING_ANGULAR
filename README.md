@@ -20,13 +20,17 @@ https://www.youtube.com/watch?v=3qBXWUpoPHo&t=26683s => very long video (17h)!
 
 # Notes
 
-install Angular CLI / Create project / run project
+- install Angular CLI / Create project / run project
 ```
 npm install -g @angular/cli@16
 ng new my-app
 cd my-app
 ng serve --open
 ```
+
+
+- In Angular.json there is "polyfills": ["zone.js"], => this is for angular detect change properly , and update the DOM
+
 
 # Tasks
 
