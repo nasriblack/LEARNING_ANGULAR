@@ -31,6 +31,22 @@ ng serve --open
 
 - In Angular.json there is "polyfills": ["zone.js"], => this is for angular detect change properly , and update the DOM
 
+- (click)="share() => the function share() it will implmented inside the ts file
+- In Angular every component ts is a class , we don't talk here about the html and css , so you need to make a speciphication about the nature of the component like this example 
+
+```
+@Component({
+  selector: 'app-product-alerts',
+  templateUrl: './product-alerts.component.html',
+  styleUrls: ['./product-alerts.component.css']
+})
+export class ProductAlertsComponent {
+
+
+}
+```
+it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component 
+
 
 # Tasks
 
@@ -77,10 +93,34 @@ ng serve --open
 In angular we talk about the one way binding and two way binding when we found this 
 [id] → property binding => which mean the id is dynamic property => 
 (click) → event binding => the parentheses is for the function here => (click)="sayMessage()"
-[(ngModel)] → two-way binding => it's input ( we gonna affect to this variable in html and ts)
+[(ngModel)] → two-way binding
 
 
-[ ] @Input & @Output =>child communication
+- [X] @Input & @Output =>child communication
+    - **Input**
+- the @Input property value passes in from the component parent ( parent -> child)
+- <app-product-alerts [product]="product"> </app-product-alerts> => we are passing the product in props ( input )
+
+    - **Ouput**
+- When we passing a data or function from the child to parent we need to use @Output() and EventEmitter() -> this allow when the property notify change it will emit an event !
+- In the child component you need to this step ts file
+    ```
+      @Output() notify = new EventEmitter();
+    ```
+    - html file 
+    ```
+    (click)="notify.emit()
+    ```
+    when we click we gonna emit this function ( add the notify function to event emitter) so in the parent component we do this
+
+
+    -html parent
+
+    ```
+    <app-product-alerts [product]="product" (notify)="onNotify()"> </app-product-alerts>
+    ```
+    - so this (notify)="onNotify() will see the event when it emit it will fire or dispatch the onNotify() function which is inside the ts file of parent component
+
 [ ] EventEmitter vs RxJS
 [ ] Sharing data with services
 
