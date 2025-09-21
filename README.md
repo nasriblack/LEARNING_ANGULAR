@@ -47,6 +47,13 @@ export class ProductAlertsComponent {
 ```
 it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component 
 
+- You can add route in app.module.ts in this section **RouterModule.forRoot** and you add this line
+```
+  { path: "products/:productId", component: ProductDetailsComponent },
+```
+
+- RouteLink directive in html [routerLink]="['/products', product.id]" => the 2 arguments is the **productId**
+
 
 # Tasks
 
@@ -132,6 +139,7 @@ In angular we talk about the one way binding and two way binding when we found t
 ## Advanced Topics
 
 [ ] Routing ( guard , resolvers , child routes)
+- ActivatedRoute from the Angular Code contains information about the route and route params! => it should injected in the constructeur of the class
 [ ] Interceptors
 [ ] Guards ( CanActivate , CanDeactivate )
 [ ] Performance optimization (onPush , trackBy, lazy modules)
