@@ -73,7 +73,10 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 [ ] Built-in pipes (async, date, currency …).
 
-[ ] async pipe + Observables is used everywhere.
+[X] async pipe + Observables is used everywhere.
+
+- Observarble is like async but more power ! how ? => by giving you the data anytime it will be ( streaming power )
+- The observarble is returnin an Observable type , and this you can subscribe to it !
 
 [ ] Custom directives & pipes for company-specific logic.
 
@@ -81,7 +84,8 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 *DI => it's for the service part , we can inject service inside a component in the constructeur with the visibilty private*
 
-[ ] Services Injected via DI 
+[ ] Services Injected via DI
+- the service must always be in the constructeur 
 
 ## RxJS & Observarbles
 <b> If you're used to React with hooks , RxJS will be the biggest learning curves! </b>
