@@ -77,6 +77,7 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 - Observarble is like async but more power ! how ? => by giving you the data anytime it will be ( streaming power )
 - The observarble is returnin an Observable type , and this you can subscribe to it !
+- Async pipe => when you are working with async data or observarble you need to put this async pipe **| async**
 
 [ ] Custom directives & pipes for company-specific logic.
 
