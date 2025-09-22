@@ -1,6 +1,7 @@
 # Progress Log
 - **20/09/2025**: Started the readme file, make the structure of the readme file.
 - **21/09/2025**: Implement the gitignore , understand observarble , input and output
+- **22/09/2025**: Begin the first-app
 
 I will Start with Angular 16 because in this angular version have the basics 
 
@@ -53,6 +54,8 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 ```
 
 - RouteLink directive in html [routerLink]="['/products', product.id]" => the 2 arguments is the **productId**
+
+- Standalone component : component dosen't need to be declared in a module .
 
 
 # Tasks
