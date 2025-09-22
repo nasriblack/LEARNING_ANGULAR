@@ -1,6 +1,6 @@
 # Progress Log
 - **20/09/2025**: Started the readme file, make the structure of the readme file.
-- **2/09/2025**: Implement the gitignore ,
+- **21/09/2025**: Implement the gitignore , understand observarble , input and output
 
 I will Start with Angular 16 because in this angular version have the basics 
 
@@ -57,7 +57,7 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 # Tasks
 
-[ ] Make this tutorial https://v16.angular.io/start
+[X] Make this tutorial https://v16.angular.io/start
 [ ] Make this tutorial https://v16.angular.io/tutorial/first-app
 [ ] Make this tutorial https://v16.angular.io/tutorial/tour-of-heroes
 
@@ -71,7 +71,7 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 ### Directives & Pipes
 
-[ ] Built-in pipes (async, date, currency …).
+[X] Built-in pipes (async, date, currency …).
 
 [X] async pipe + Observables is used everywhere.
 
@@ -85,7 +85,7 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 *DI => it's for the service part , we can inject service inside a component in the constructeur with the visibilty private*
 
-[ ] Services Injected via DI
+- [X] Services Injected via DI
 - the service must always be in the constructeur 
 
 ## RxJS & Observarbles
