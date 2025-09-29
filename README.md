@@ -161,6 +161,8 @@ export class App {
 
 - [X] Services Injected via DI
 - the service must always be in the constructeur 
+**Avoid circular dependencies**: Two services injecting each other will fail; extract common logic into a third service or redesign.
+
 
 ## RxJS & Observarbles
 <b> If you're used to React with hooks , RxJS will be the biggest learning curves! </b>
