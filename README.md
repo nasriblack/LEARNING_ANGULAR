@@ -10,6 +10,12 @@ I will Start with Angular 16 because in this angular version have the basics
 https://v16.angular.io/docs
 https://rxjs.dev/guide/overview
 
+# Repository
+https://github.com/mryenagandula/dailycoding-app
+https://github.com/0xdeee/edrk-ng-prj-fbook/tree/main
+https://github.com/DevashishPathrabe/CapstoneProject_01/tree/main *
+https://github.com/valerisuleo/angular
+
 
 # VIDEO'S
 
@@ -226,8 +232,16 @@ In angular we talk about the one way binding and two way binding when we found t
 
 ## Advanced Topics
 
+
+### ROUTING
 - [ ] Routing ( guard , resolvers , child routes)
 - ActivatedRoute from the Angular Code contains information about the route and route params! => it should injected in the constructeur of the class
+- Route Guard **canActivate** => guards decide if navigation is allowed !
+```
+export const authGuard = () => isLoggedIn ? true : inject(Router).createUrlTree(['/']);
+{ path: 'protected', component: Protected, canActivate: [authGuard] }
+```
+
 - [ ] Interceptors
 - [ ] Guards ( CanActivate , CanDeactivate )
 - [ ] Performance optimization (onPush , trackBy, lazy modules)
