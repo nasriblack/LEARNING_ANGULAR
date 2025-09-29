@@ -62,6 +62,7 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 - [X] Make this tutorial https://v16.angular.io/start
 - [ ] Search an api with sign in , roles , CRUD endpoint to work a project with angular
+- [ ] Make this tutorial https://www.w3schools.com/angular/default.asp
 
 
 # TOPIC
