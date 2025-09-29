@@ -135,6 +135,21 @@ In angular we talk about the one way binding and two way binding when we found t
     ```
     - so this (notify)="onNotify() will see the event when it emit it will fire or dispatch the onNotify() function which is inside the ts file of parent component
 
+- Data Binding
+```
+ Interpolation: {{ value }} prints text.
+ Property binding: [prop]="value" sets element/DOM properties.
+ Event binding: (event)="handler($event)" listens to user actions.
+ [(ngModel)] to read and update form values => Two-way binds
+```
+
+- Attribute Binding
+```
+[attr.colspan]="span"
+[class.active]="isActive"
+[style.color]="color"
+```
+
 - [ ] EventEmitter vs RxJS
 - [ ] Sharing data with services
 
