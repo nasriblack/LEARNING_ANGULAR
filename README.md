@@ -69,11 +69,77 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 ## Must Know
 
-- [ ] Lifecycle
+### Lifecycle
+
+### Forms
+```html
+<h3>Forms</h3>
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+      <label>
+        Name:
+        <input name="name" [(ngModel)]="name" placeholder="Enter your name">
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    <p>Value: {{ name }}</p>
+    <p *ngIf="submitted">Submitted!</p>
+```
+
+=>
+- [(ngModel)]="name": Two-way binds the input to the name field.
+- #f="ngForm": Exports the form state (e.g., f.valid, f.invalid).
+- (ngSubmit)="onSubmit()": Handles submit using the component method.
+- Display: {{ name }} shows the current value; a flag shows the submitted state.
+- **Avoid [(ngModel)] on controls that also use formControlName**
+
+=>This is how we use formControlName , **html**
+```html
+form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label>
+        Name
+        <input formControlName="name" placeholder="Your name">
+      </label>
+      <div *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched || submitted)" style="color:crimson">
+        <small *ngIf="form.controls.name.errors && form.controls.name.errors['required']">Name is required.</small>
+        <small *ngIf="form.controls.name.errors && form.controls.name.errors['minlength']">Min 3 characters.</small>
+      </div>
+
+      <label>
+        Email
+        <input formControlName="email" placeholder="you@example.com">
+      </label>
+      <div *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched || submitted)" style="color:crimson">
+        <small *ngIf="form.controls.email.errors && form.controls.email.errors['required']">Email is required.</small>
+        <small *ngIf="form.controls.email.errors && form.controls.email.errors['email']">Email must be valid.</small>
+      </div>
+
+      <label>
+        <input type="checkbox" formControlName="newsletter">
+        Subscribe to newsletter
+      </label>
+
+      <button type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+```
+
+**ts**
+```ts
+export class App {
+  fb = new FormBuilder();
+  submitted = false;
+  form = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+    newsletter: [false],
+  });
+
+  onSubmit() { this.submitted = true; }
+}
+```
 
 ### Directives & Pipes
 
--[X] Built-in pipes (async, date, currency …).
+- [X] Built-in pipes (async, date, currency …).
 
 - [X] async pipe + Observables is used everywhere.
 
