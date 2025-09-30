@@ -83,6 +83,8 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 => is a package that we need to import it in modules / Provide the provideHttpClient() at bootstrap
 - it use to fetch data and send JSON
 - it return an **Observarbles** either we use **subscribe** in ts file or **sync** pipe in html
+- **Single subscription**: Avoid using | async multiple times on the same Observable in the same template area; use | async as value once and reuse value.
+- **Auto-unsubscribe**: The async pipe cleans up when the view is destroyed.
 
 #### GET
 
