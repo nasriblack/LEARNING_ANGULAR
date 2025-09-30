@@ -25,8 +25,14 @@ https://github.com/valerisuleo/angular
 https://www.youtube.com/watch?v=3qBXWUpoPHo&t=26683s => very long video (17h)!
 nvm 
 
-# Questions and Answers
+# Bug and Fix
 
+- Can't bind to 'formGroup' since it isn't a known property of 'form'
+  - You need to import this in the module
+  ```
+  import { ReactiveFormsModule } from '@angular/forms';
+  ```
+  - 
 
 # Notes
 
@@ -67,6 +73,14 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 - Standalone component : component dosen't need to be declared in a module .
 
 
+- To make a module ( folder , organization) in angular
+```
+ng g module auth --routing
+```
+=> this give you a folder which give you the module with routing
+
+
+
 # Tasks
 
 - [X] Make this tutorial https://v16.angular.io/start
@@ -77,6 +91,8 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 # TOPIC
 
 ## Must Know
+
+
 
 ### Control flow (if / else)
 ```
@@ -114,6 +130,67 @@ Clean up timers/listeners to prevent leaks.!
 - it return an **Observarbles** either we use **subscribe** in ts file or **sync** pipe in html
 - **Single subscription**: Avoid using | async multiple times on the same Observable in the same template area; use | async as value once and reuse value.
 - **Auto-unsubscribe**: The async pipe cleans up when the view is destroyed.
+
+- The difference between the Subscribe and Pipe in the Observarble 
+  - The Subscribe give us a way to implement code in case of success and in case of error 
+  ```ts
+  onLogin() {
+  if (this.loginForm.valid) {
+    console.log('Form Value:', this.loginForm.value);
+    
+    // ✅ This actually triggers the HTTP request
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
+      .subscribe({
+        next: (res) => {
+          console.log('Login successful:', res); // This runs when server responds
+        },
+        error: (err) => {
+          console.error('Login failed:', err); // This runs if request fails
+        }
+      });
+  }
+}
+  ```
+  - Otherwise the pipe is more complicated it give us these function and methods to implement it in the response, and it use .subscribe in the other way
+  ```
+  .pipe(
+  tap(),        // Side effects (logging, setting variables)
+  map(),        // Transform data
+  filter(),     // Filter out unwanted values
+  catchError(), // Handle errors gracefully
+  retry(),      // Retry on failure
+  delay(),      // Add delays
+  timeout(),    // Set timeouts
+  finalize(),   // Cleanup (always runs)
+  switchMap(),  // Switch to another Observable
+)
+  ```
+  - a fully example with the pipe example
+  ```ts
+  onLogin() {
+  if (this.loginForm.valid) {
+    const { username, password } = this.loginForm.value;
+    
+    this.authService.login(username, password)
+      .pipe(
+        tap(() => this.isLoading = true),
+        tap(res => this.tokenService.saveToken(res.token)),
+        map(res => res.user),
+        catchError(err => {
+          this.showErrorMessage('Invalid credentials');
+          return EMPTY; // Complete the stream without emitting
+        }),
+        finalize(() => this.isLoading = false)
+      )
+      .subscribe(user => {
+        if (user) {
+          this.userService.setCurrentUser(user);
+          this.router.navigate(['/dashboard']);
+        }
+      });
+  }
+}
+  ```
 
 #### GET
 
