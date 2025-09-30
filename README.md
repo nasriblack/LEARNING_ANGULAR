@@ -78,6 +78,18 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 ### Lifecycle
 
+- Setup: Use **ngOnInit** after inputs are set.
+- React: Handle input changes in **ngOnChanges**.
+- DOM ready: Use **ngAfterViewInit** to access @ViewChild refs.
+- Cleanup: Release timers/subscriptions/listeners in **ngOnDestroy**.
+
+
+#### ngOnInit
+- Starts action when the component is created !
+
+#### ngOnDestroy
+Clean up timers/listeners to prevent leaks.!
+
 
 ### HttpClient
 => is a package that we need to import it in modules / Provide the provideHttpClient() at bootstrap
