@@ -245,13 +245,18 @@ export class App {
 - the service must always be in the constructeur 
 **Avoid circular dependencies**: Two services injecting each other will fail; extract common logic into a third service or redesign.
 
+- **InjectionToken**: for non-class dependencies (config objects, feature flags, strings, arrays).
+
+- **inject()**: when you can’t use constructor injection (e.g. in providers, helper functions, or top-level code).
+- We can use **@Optional()** when a dependency is not required
+
 
 ## RxJS & Observarbles
 <b> If you're used to React with hooks , RxJS will be the biggest learning curves! </b>
 
 - [ ]  Creating Observables (of, from, interval, etc.).
 - [ ]  Operators map, filter, switchMap, mergeMap, concatMap, tap, catchError.
-- [ ]  async pipe to auto-subscribe/unsubscribe in templates.
+- [X]  async pipe to auto-subscribe/unsubscribe in templates.
 
 ## Data & Communication
 
