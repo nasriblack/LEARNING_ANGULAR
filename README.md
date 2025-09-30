@@ -331,5 +331,28 @@ export const authGuard = () => isLoggedIn ? true : inject(Router).createUrlTree(
 { path: 'protected', component: Protected, canActivate: [authGuard] }
 ```
 
+```
+import { inject } from '@angular/core';
+import { Router, Routes, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
+
+function canActivate() {
+  const router = inject(Router);
+  return isLoggedIn() || router.createUrlTree(['/']);
+}
+
+const routes: Routes = [
+  { path: 'feature', loadComponent: () => import('./feature').then(m => m.Feature), data: { title: 'Feature' }, canActivate: [canActivate] },
+  { path: 'inbox', loadComponent: () => import('./inbox').then(m => m.Inbox) },
+  { path: 'compose', outlet: 'modal', loadComponent: () => import('./compose').then(m => m.Compose) }
+];
+
+provideRouter(routes, withPreloading(PreloadAllModules));
+```
+
+
+- **CanDeactivateFn**: Decide if navigation away is allowed (e.g., confirm dialog).
+- Here we can see data for static route which hold metadata
+
+
 - [ ] Guards ( CanActivate , CanDeactivate )
 - [ ] Performance optimization (onPush , trackBy, lazy modules)
