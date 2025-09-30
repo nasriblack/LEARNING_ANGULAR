@@ -78,6 +78,58 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 ### Lifecycle
 
+
+### HttpClient
+=> is a package that we need to import it in modules / Provide the provideHttpClient() at bootstrap
+- it use to fetch data and send JSON
+- it return an **Observarbles** either we use **subscribe** in ts file or **sync** pipe in html
+
+#### GET
+
+```ts
+load() {
+    this.loading = true;
+    this.error = '';
+    this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+      .subscribe({
+        next: (data) => { this.users = data; this.loading = false; },
+        error: () => { this.error = 'Failed to load users'; this.loading = false; }
+      });
+  }
+```
+
+#### POST
+
+```ts
+createPost() {
+    this.loading = true;
+    this.error = '';
+    this.result = null;
+    this.http.post<any>('https://jsonplaceholder.typicode.com/posts', {
+      title: 'foo',
+      body: 'bar',
+      userId: 1
+    }).subscribe({
+      next: (res) => { this.result = res; this.loading = false; },
+      error: () => { this.error = 'Failed to create post'; this.loading = false; }
+    });
+  }
+```
+
+#### Http Interceptors
+- Runn cross-cutting logic on every request / response !
+```ts
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const cloned = req.clone({ setHeaders: { Authorization: 'Bearer TOKEN' } });
+  return next(cloned);
+};
+
+bootstrapApplication(App, {
+  providers: [provideHttpClient(withInterceptors([authInterceptor]))]
+});
+```
+
+
 ### Forms
 ```html
 <h3>Forms</h3>
@@ -245,6 +297,5 @@ export const authGuard = () => isLoggedIn ? true : inject(Router).createUrlTree(
 { path: 'protected', component: Protected, canActivate: [authGuard] }
 ```
 
-- [ ] Interceptors
 - [ ] Guards ( CanActivate , CanDeactivate )
 - [ ] Performance optimization (onPush , trackBy, lazy modules)
