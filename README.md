@@ -76,6 +76,21 @@ it's a <b>decorator</b>  will tell  class ProductAlertsComponent is a component
 
 ## Must Know
 
+### Control flow (if / else)
+```
+@if (score > 90) { <p>A</p> } @else if (score > 75) { <p>B</p> } @else { <p>C</p> }
+
+<ul>
+  @for (it of items; track it.id) { <li>{{ it.label }}</li> } @empty { <li>No items</li> }
+</ul>
+
+@switch (status) {
+  @case ('pending') { <p>Pending</p> }
+  @case ('done') { <p>Done</p> }
+  @default { <p>Unknown</p> }
+}
+```
+
 ### Lifecycle
 
 - Setup: Use **ngOnInit** after inputs are set.
