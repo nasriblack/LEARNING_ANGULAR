@@ -23,7 +23,7 @@ https://github.com/valerisuleo/angular
 # VIDEO'S
 
 https://www.youtube.com/watch?v=3qBXWUpoPHo&t=26683s => very long video (17h)!
-
+nvm 
 
 # Questions and Answers
 
