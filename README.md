@@ -2,6 +2,7 @@
 - **20/09/2025**: Started the readme file, make the structure of the readme file.
 - **21/09/2025**: Implement the gitignore , understand observarble , input and output
 - **22/09/2025**: Begin the first-app , revert the app because it using inline template
+- **29/09/2025**: Taking notes and understanding the DI , routing , binding data, reactive form, canActivate
 
 I will Start with Angular 16 because in this angular version have the basics 
 
