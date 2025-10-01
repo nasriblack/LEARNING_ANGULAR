@@ -79,7 +79,10 @@ ng g module auth --routing
 ```
 => this give you a folder which give you the module with routing
 
-
+- To generate a **guard** you need this **command**
+  ```
+  ng g guard auth
+  ```
 
 # Tasks
 
