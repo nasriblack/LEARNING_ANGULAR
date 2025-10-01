@@ -336,6 +336,29 @@ export class App {
 ## RxJS & Observarbles
 <b> If you're used to React with hooks , RxJS will be the biggest learning curves! </b>
 
+- What is BehaviorSubject and which case i need to it ?
+    - I need BehaviorSubject when i need to change something in html that is not render like sign in to sign out ! so based on IA this fix my problem
+    - it's most similar to useState + useEffect , it's most similar to share state with the app.
+    - You need to subscribe to it ! because it's Observarble , when you subscribe on it , it give the current value !
+      ```
+        # This is in service
+        # Here i create the behaviorSubject and i initialite the state based on the returning function hasToken which return true or false
+        private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+        # Second i create a function that hold this value as Observarble to subscribe to it later !
+        isAuthenticated(): Observable<boolean> {
+        return this.isLoggedInSubject.asObservable();
+        }
+      # In ngOnInit we should subscribe to this Observarble like this example, we create the isLoggedIn as boolean and private authSubscription?: Subscription; => those 2 are initialisation
+      ngOnInit(): void {
+      this.authService.isAuthenticated().subscribe(
+        (authStatus: boolean) => {
+          this.isLoggedIn = authStatus; // Updates immediately!
+          console.log('Auth status changed:', this.isLoggedIn);
+        }
+      );
+      }
+      ```
+
 - [ ]  Creating Observables (of, from, interval, etc.).
 - [ ]  Operators map, filter, switchMap, mergeMap, concatMap, tap, catchError.
 - [X]  async pipe to auto-subscribe/unsubscribe in templates.
