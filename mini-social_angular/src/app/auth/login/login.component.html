@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <h2 class="mb-3">Login</h2>
+  <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        class="form-control"
+        placeholder="Enter username"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter password"
+      />
+    </div>
+
+    <button [disabled]="isLoading" class="btn btn-primary" type="submit">
+      <div *ngIf="isLoading" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div *ngIf="!isLoading">
+        Login
+      </div>
+    </button>
+  </form>
+</div>
