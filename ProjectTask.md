@@ -10,6 +10,17 @@ User -> Posts -> Comments -> users
 - Each Posts have Comments
 - Each Comments belong to users
 
+
+## Structure
+
+src/app/
+ ├── auth/          # AuthModule (login, register, guards)
+ ├── posts/         # PostsModule (feed, post details, comments)
+ ├── admin/         # AdminModule (product CRUD, dashboard)
+ ├── shared/        # SharedModule (navbar, spinner, pipes, directives)
+ └── app.module.ts  # Root module
+
+
 ## API
 
 - https://dummyjson.com/posts
