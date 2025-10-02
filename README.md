@@ -5,6 +5,10 @@
 - **29/09/2025**: Taking notes and understanding the DI , routing , binding data, reactive form, canActivate
 - **30/09/2025**: Taking notes and understanding canDeactivate , advanced DI , control flow , interceptors
 - **01/10/2025**: Begin the mini social angular app , implement the auth , canActivate routing , modules , routing ...
+- **02/10/2025**:  
+  - [ ] Transform the dashboard into module
+  - [ ] Understand the env folder
+  - [ ] Make the error component , not found page
 
 
 I will Start with Angular 16 because in this angular version have the basics 
@@ -25,6 +29,15 @@ https://github.com/valerisuleo/angular
 
 https://www.youtube.com/watch?v=3qBXWUpoPHo&t=26683s => very long video (17h)!
 nvm 
+
+# Structure
+
+src/app/
+ ├── auth/          # AuthModule (login, register, guards)
+ ├── posts/         # PostsModule (feed, post details, comments)
+ ├── admin/         # AdminModule (product CRUD, dashboard)
+ ├── shared/        # SharedModule (navbar, spinner, pipes, directives)
+ └── app.module.ts  # Root module
 
 # Bug and Fix
 

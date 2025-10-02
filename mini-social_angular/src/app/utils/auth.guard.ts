@@ -1,56 +1,63 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { isUserAdmin, isUserLoggedIn } from './util';
-import { routerLinks } from './endPoints';
+import { Injectable } from "@angular/core";
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from "@angular/router";
+import { Observable } from "rxjs";
+import { isUserAdmin, isUserLoggedIn } from "./util";
+import { adminRouter, routerLinks } from "./endPoints";
 
 function getResolvedUrl(route: ActivatedRouteSnapshot): string {
   return route.pathFromRoot
-    .map(v => v.url.map(segment => segment.toString()).join('/'))
-    .join('/');
+    .map((v) => v.url.map((segment) => segment.toString()).join("/"))
+    .join("/");
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
-
 export class AuthGuard implements CanActivate {
+  constructor(public router: Router) {}
 
-  constructor(public router: Router) { }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     const url = getResolvedUrl(route);
     if (isUserLoggedIn()) {
-      if (['/register', routerLinks.login].includes(url)) {
+      if (["/register", routerLinks.login].includes(url)) {
         if (isUserAdmin()) {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([routerLinks.dashboard]);
+          return false;
+        } else {
+          this.router.navigate([""]);
           return false;
         }
-        else {
-          this.router.navigate(['']);
-          return false;
-        }
-      }
-      
-      else if (['/dashboard'].includes(url)) {
+      } else if ([routerLinks.dashboard].includes(url)) {
         if (isUserAdmin()) {
           return true;
-        }
-        else {
-          this.router.navigate(['']);
+        } else {
+          this.router.navigate([""]);
           return false;
         }
-      }
-      else {
+      } else {
         return true;
       }
-    }
-    else {
-      if (['/dashboard', '/post-question'].includes(url) || url.startsWith('/question/')) {
-        this.router.navigate(['']);
+    } else {
+      if (
+        [routerLinks.dashboard, "/post-question"].includes(url) ||
+        url.startsWith("/question/")
+      ) {
+        this.router.navigate([""]);
         return false;
-      }
-      else {
+      } else {
         return true;
       }
     }
