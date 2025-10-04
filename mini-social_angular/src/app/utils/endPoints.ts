@@ -1,5 +1,9 @@
+import { environment } from "src/environments/environment";
+
+export const apiUrl = environment.apiUrl;
+
 export const endPoints = {
-  login: "https://dummyjson.com/auth/login",
+  login: `${apiUrl}/auth/login`,
   users: "https://dummyjson.com/users",
   posts: "https://dummyjson.com/posts",
   comments: "https://dummyjson.com/comments",
